@@ -6,7 +6,14 @@ const mime = require('mime');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.use(cors());
+const corsOptions = {
+    origin: '*', // or use '*' for all origins
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  };
+  
+  // Use CORS with the specified options
+  app.use(cors(corsOptions));
 
 // Middleware
 app.use(bodyParser.json());
